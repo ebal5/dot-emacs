@@ -1,0 +1,63 @@
+;;; Code:
+(use-package ddskk
+  :commands (skk-isearch-mode-setup skk-isearch-mode-cleanup)
+  :bind (("C-x j" . skk-auto-fill-mode)
+	 ("C-x C-j" . skk-mode))
+  :init
+  (unless (file-exists-p (locate-user-emacs-file "./skk-jisyo"))
+    (make-directory "skk-jisyo" (locate-user-emacs-file "./")))
+  (unless (file-exists-p (locate-user-emacs-file "ddskk"))
+    (make-directory "ddskk" (locate-user-emacs-file "./")))
+  (setq default-input-method "japanese-skk")
+  (unless (executable-find "cmigemo")
+    (progn
+      (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
+      (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
+      (defvar skk-isearch-start-mode 'latin)))
+  (defvar skk-large-jisyo (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.L")
+				'euc-jisx0213))
+  (defvar skk-extra-jisyo-file-list
+    (list
+     (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.KAO") 'euc-jisx0213)
+     (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.geo") 'euc-jisx0213)
+     (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.itaiji") 'euc-jisx0213)
+     (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.jinmei") 'euc-jisx0213)
+     (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.JIS3_4") 'euc-jisx0213)
+     (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.edict") 'euc-jisx0213)
+     (cons (locate-user-emacs-file "skk-jisyo/SKK-JISYO.propernoun") 'euc-jisx0213))
+    )
+  (defvar skk-show-annotation t)
+  (defvar skk-use-azik t)
+  (defvar skk-azik-keyboard-type 'jp106)
+  (defvar skk-show-annotation-delay 0.5)
+  :config
+  (defvar skk-byte-compile-init-file t)
+  (defvar skk-show-annotation t)
+  (defvar skk-get-jisyo-direcroty (locate-user-emacs-file "skk-jisyo"))
+  (defvar skk-user-directory (locate-user-emacs-file "ddskk"))
+  (defvar skk-dcomp-activate t)
+  (defvar skk-dcomp-multiple-activate t)
+  (defvar skk-henkan-strict-okuri-precedence t)
+  (defvar skk-use-look t)
+  (defvar skk-use-color-cursor t)
+  (defvar skk-indicator-use-cursor-color t)
+  (add-hook 'skk-load-hook (lambda ()
+			     (require 'context-skk)
+			     (require 'skk-hint)
+			     (require 'skk-study)))
+  (add-hook 'skk-mode-hook 'my/re-key-chord)
+  )
+
+(use-package migemo
+  :if (executable-find "cmigemo")
+  :config
+  (setq migemo-command "cmigemo")
+  (setq migemo-options '("-q" "--emacs"))
+  (setq migemo-user-dictionary nil)
+  (setq migemo-regex-dictionary nil)
+  (setq migemo-coding-system 'utf-8-unix)
+  (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
+  ;; (load-library "migemo")
+  (migemo-init)
+  )
+;;; 01_language_settins.el ends here

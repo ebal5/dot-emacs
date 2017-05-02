@@ -1,0 +1,12 @@
+**/*.elc
+**/*~
+elpa/
+\#*\#
+bm-repository
+network-security.data
+smex*
+skk-jisho/
+skk-jisho
+skk-jisyo/
+skk-jisyo
+.recentf

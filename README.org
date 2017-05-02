@@ -1,0 +1,28 @@
+
+* My Emacs Settings
+
+  It is new my Emacs's setting files.
+  I uses package.el so this setting requires Emacs 24.4 >=
+  to move completely.
+  
+  And, some setting in there are functions defined at 
+  Emacs 25 >= so there are some settings needs Emacs 25. 
+  But, these files are treated the version of Emacs.
+  
+  Init.el file can run on 24.4 <= because it also treats the 
+  version of Emacs. But of course it is not perfect.
+
+** Realization way
+
+   I use package.el wraped by use-package. It downloads packages
+   automatically.
+
+*** init-loader
+
+    It loads setting files in designated directory one by one
+    in order of numeric (file's prefix number like 01 or 12 
+    and so on). I setted the directory to "inits", so some files
+    are putted in there.
+    
+    This package is also downloaded by use-package.
+   
