@@ -3,10 +3,10 @@
   :diminish yas-minor-mode
   :config
   (yas-reload-all)
-  (add-hook 'prog-mode-hook #'yas-minor-mode)
-  (add-hook 'html-mode-hook #'yas-minor-mode)
-  (add-hook 'sgml-mode-hook #'yas-minor-mode)
-  (add-hook 'css-mode-hook #'yas-minor-mode)
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (add-hook 'html-mode-hook 'yas-minor-mode)
+  (add-hook 'sgml-mode-hook 'yas-minor-mode)
+  (add-hook 'css-mode-hook 'yas-minor-mode)
   (when (package-installed-p 'web-mode)
     (add-hook 'web-mode-hook #'yas-minor-mode))
   (when (equal my/completion-type 'company)
