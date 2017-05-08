@@ -20,11 +20,13 @@
 	   :map company-search-map
 	   ("C-n" . company-select-next)
 	   ("C-p" . company-select-previous))
-    :init
+    :config
     (add-hook 'java-mode-hook
 	      '(lambda ()
 		 (delete 'company-eclim company-backends)))
-    :config
+    (add-hook 'prog-mode-hook
+	      '(lambda ()
+		 (push 'company-backends 'company-yasnippet)))
     (global-company-mode +1)
     (setq company-dabbrev-downcase nil)
     (add-to-list 'company-backends '(:with company-yasnippet))
