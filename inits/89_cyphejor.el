@@ -1,8 +1,7 @@
 ;;; Code:
 (use-package cyphejor
-  :pin melpa-stable
-  :init
-  (setq cyphejor-rules
+  :config
+  (custom-set-variables '(cyphejor-rules
 	'(:upcase
 	  ("bookmark" "→")
 	  ("buffer" "β")
@@ -24,8 +23,7 @@
 	  ("org" "Ω")
 	  ("conf" "⚙")
 	  ("java" "☕")
-	  ))
-  :config
+	  )))
   (cyphejor-mode 1)
   )
 ;;; 89_cyphejor.el ends here
