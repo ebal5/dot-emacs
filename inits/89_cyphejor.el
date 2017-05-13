@@ -1,7 +1,6 @@
 ;;; Code:
 (use-package cyphejor
-  :pin melpa-stable
-  :init
+  :config
   (setq cyphejor-rules
 	'(:upcase
 	  ("bookmark" "→")
@@ -25,7 +24,6 @@
 	  ("conf" "⚙")
 	  ("java" "☕")
 	  ))
-  :config
   (cyphejor-mode 1)
   )
 ;;; 89_cyphejor.el ends here

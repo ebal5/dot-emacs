@@ -1,0 +1,6 @@
+;;; Code:
+(use-package groovy-mode
+  :mode
+  (("\\.gradle\\'" . groovy-mode)))
+(use-package gradle-mode)
+;;; 21_groovy.el ends here
