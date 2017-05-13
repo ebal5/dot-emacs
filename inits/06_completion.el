@@ -29,7 +29,6 @@
 		 (push 'company-backends 'company-yasnippet)))
     (global-company-mode +1)
     (setq company-dabbrev-downcase nil)
-    (add-to-list 'company-backends '(:with company-yasnippet))
     (custom-set-variables
      '(company-minimum-prefix-length 3)
      '(company-idle-delay 0)
