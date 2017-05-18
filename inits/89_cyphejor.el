@@ -1,7 +1,6 @@
 ;;; Code:
 (use-package cyphejor
   :config
-  (setq cyphejor-rules
   (custom-set-variables '(cyphejor-rules
 	'(:upcase
 	  ("bookmark" "→")
@@ -24,8 +23,7 @@
 	  ("org" "Ω")
 	  ("conf" "⚙")
 	  ("java" "☕")
-	  ))
-	  )
+	  )))
   (cyphejor-mode 1)
   )
 ;;; 89_cyphejor.el ends here
