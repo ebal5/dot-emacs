@@ -70,6 +70,31 @@
 (setq org-latex-default-class "bxjsarticle"))
 )
 
+(use-package org-present
+  :bind
+  (:map org-present-mode-keymap
+	("b" . org-present-big)
+	("s" . org-present-small)
+	("q" . org-present-quit))
+  :config
+  (defun my/org-present-hook ()
+    "My setting for org-present."
+    (org-present-big)
+    (org-display-inline-images)
+    (org-present-hide-cursor)
+    (org-present-read-only)
+    )
+  (defun my/org-present-quit-hook ()
+    "My setting for org-present escape."
+    (org-present-small)
+    (org-remove-inline-images)
+    (org-present-show-cursor)
+    (org-present-read-write))
+  (add-hook 'org-present-mode-hook 'my/org-present-hook)
+  (add-hook 'org-present-mode-quick-hook 'my/org-present-quit-hook)
+  (setq org-present-text-scale 5)
+  )
+
 (use-package ox-qmd)
 (use-package ox-gfm)
 (use-package ox-pandoc
