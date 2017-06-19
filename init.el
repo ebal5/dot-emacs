@@ -3,12 +3,12 @@
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
 ;; byte compile if el file is newer whan elc file
-(add-hook 'after-init-hook
-          '(lambda ()
-             (let* ((el (locate-user-emacs-file "init.el"))
-                    (elc (concat el "c")))
-               (when (file-newer-than-file-p el elc)
-                 (byte-compile-file el)))))
+;; (add-hook 'after-init-hook
+;;           '(lambda ()
+;;              (let* ((el (locate-user-emacs-file "init.el"))
+;;                     (elc (concat el "c")))
+;;                (when (file-newer-than-file-p el elc)
+;;                  (byte-compile-file el)))))
 
 (defvar my/emacs-version-number
   (let* ((major emacs-major-version)
@@ -105,7 +105,7 @@
 (defvar my-recentf-list-prev nil)
 (defadvice recentf-save-list
     (around no-message activate)
-  "If `recentf-list' and previous recentf-list are equal, do nothing. And suppress the output from `message' and `write-file' to minibuffer."
+  "If `recentf-list' and previous recentf-list are equal, do nothing.  And suppress the output from `message' and `write-file' to minibuffer."
   (unless (equal recentf-list my-recentf-list-prev)
     (cl-flet ((message (format-string &rest args)
 		       (eval `(format ,format-string ,@args)))
@@ -190,10 +190,42 @@
       (make-directory "inits" (locate-user-emacs-file "./")))
     :config
     (setq init-loader-show-log-after-init nil)
-    (setq init-loader-byte-compile t)
+    ;; (setq init-loader-byte-compile t)
     (init-loader-load (locate-user-emacs-file "inits"))
     (message "init-loader setting loaded")
     )
   )
 
 ;;; init.el ends here
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-image-file-mode 1)
+ '(beacon-lighter "")
+ '(column-number-mode 1)
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case (quote nil))
+ '(company-idle-delay 0)
+ '(company-minimum-prefix-length 3)
+ '(company-selection-wrap-around t)
+ '(dired-dwim-target t)
+ '(dired-recursive-copies (quote always))
+ '(dired-recursive-deletes (quote top))
+ '(eldoc-idle-delay 0.4)
+ '(menu-bar-mode nil)
+ '(package-selected-packages
+   (quote
+    (telephone-line beacon madhat2r-theme yatex open-junk-file plantuml-mode ox-pandoc ox-gfm ox-qmd org-present markdown-mode+ markdown-mode skewer-mode string-edit js2-mode rainbow-mode emmet-mode web-mode irony c-eldoc ensime sbt-mode scala-mode java-snippets gradle-mode groovy-mode quickrun highlight-symbol flycheck-pos-tip flycheck free-keys volatile-highlights undo-tree perspeen avy-migemo avy company-web company-shell company sequential-command expand-region bm counsel-projectile counsel-gtags ivy-hydra counsel migemo ddskk orgit magit-gitflow magit init-loader switch-buffer-functions use-package-chords use-package)))
+ '(scroll-bar-mode nil)
+ '(select-enable-clipboard t)
+ '(tool-bar-mode nil)
+ '(use-file-dialog nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
