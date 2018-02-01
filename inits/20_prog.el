@@ -11,4 +11,11 @@
 	("t" js-doc-insert-tag)
 	))
   )
+(defun my-c-c++-mode-init ()
+  (progn
+  (setq c-basic-offset 4)
+  (setq tab-width 4))
+  )
+(add-hook 'c-mode-hook 'my-c-c++-mode-init)
+(add-hook 'c++-mode-hook 'my-c-c++-mode-init)
 ;;; 20_prog.el ends here
