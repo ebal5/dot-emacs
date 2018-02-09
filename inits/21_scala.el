@@ -21,7 +21,7 @@
 	      (add-hook 'before-save-hook 'sbt-hydra:check-modified-buffers))))
 (use-package ensime
   :if (executable-find "activator")
-  :pin melpa-stable
+  :pin melpa
   :config
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
   (add-hook 'java-mode-hook 'ensime-mode))
