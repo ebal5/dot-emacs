@@ -24,9 +24,9 @@
     (add-hook 'java-mode-hook
 	      '(lambda ()
 		 (delete 'company-eclim company-backends)))
-    (add-hook 'prog-mode-hook
-	      '(lambda ()
-		 (push 'company-backends 'company-yasnippet)))
+    ;; (add-hook 'prog-mode-hook
+    ;; 	      '(lambda ()
+    ;; 		 (push 'company-backends 'company-yasnippet)))
     (global-company-mode +1)
     (setq company-dabbrev-downcase nil)
     (custom-set-variables

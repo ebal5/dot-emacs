@@ -32,6 +32,7 @@
 \\usepackage{graphicx}
 \\usepackage{color}
 \\usepackage{hyperref}
+\\usepackage{pdfpages}
 [NO-DEFAULT-PACKAGES]
 [PACKAGES]
 [EXTRA]"
