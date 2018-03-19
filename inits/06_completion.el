@@ -3,7 +3,6 @@
   'company
   "It's value will 'company or 'ac(means auto-complete)."
   )
-()
 (defun my/company-settings ()
   "Settings for company."
   (use-package company
