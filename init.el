@@ -124,7 +124,7 @@
 (setq recentf-save-file (expand-file-name ".recentf" user-emacs-directory))
 (setq recentf-max-saved-items 2000)
 (setq recentf-exclude '(".recentf"))
-(setq recentf-auto-cleanup 10)
+(setq recentf-auto-cleanup 30)
 (run-with-idle-timer 30 t 'recentf-save-list)
 (recentf-mode 1)
 
@@ -141,8 +141,11 @@
   (add-to-list 'package-archives
 	       '("org" . "http://orgmode.org/elpa/") t)
   ;; initialize packages
-  (package-initialize)
-  (package-refresh-contents)
+  (unless (file-exists-p (locate-user-emacs-file "first"))
+    (package-initialize)
+    (package-refresh-contents)
+    (shell-command (concat "touch " (locate-user-emacs-file "first")))
+    )
 
   (setq use-package-always-ensure t)
 
@@ -252,3 +255,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

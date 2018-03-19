@@ -3,7 +3,7 @@
   'company
   "It's value will 'company or 'ac(means auto-complete)."
   )
-
+()
 (defun my/company-settings ()
   "Settings for company."
   (use-package company
@@ -24,9 +24,6 @@
     (add-hook 'java-mode-hook
 	      '(lambda ()
 		 (delete 'company-eclim company-backends)))
-    (add-hook 'prog-mode-hook
-	      '(lambda ()
-		 (push 'company-backends 'company-yasnippet)))
     (global-company-mode +1)
     (setq company-dabbrev-downcase nil)
     (custom-set-variables
