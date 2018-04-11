@@ -141,8 +141,8 @@
   (add-to-list 'package-archives
 	       '("org" . "http://orgmode.org/elpa/") t)
   ;; initialize packages
+  (package-initialize)
   (unless (file-exists-p (locate-user-emacs-file "first"))
-    (package-initialize)
     (package-refresh-contents)
     (shell-command (concat "touch " (locate-user-emacs-file "first")))
     )
@@ -154,7 +154,7 @@
 
   (eval-when-compile
     (require 'use-package))
-  (require 'diminish)
+  (use-package diminish)
   (require 'bind-key)
   (unless (require 'use-package nil t)
     (defmacro use-package (&rest args)nil))
