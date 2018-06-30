@@ -12,3 +12,5 @@ skk-jisyo
 .recentf
 /eshell/history
 /session.*
+/first
+/srecode-map.el

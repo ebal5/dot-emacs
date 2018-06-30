@@ -94,7 +94,7 @@
     :pin melpa-stable)
   (use-package counsel-projectile
     :config
-    (counsel-projectile-on))
+    (counsel-projectile))
   )
 
 (defun my/ido-settings ()

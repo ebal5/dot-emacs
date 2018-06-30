@@ -13,6 +13,8 @@
    scala-mode
    scala2-mode
    rust-mode
+   lisp-mode
+   emacs-lisp-mode
    ))
 (mapc
    (lambda (hook)

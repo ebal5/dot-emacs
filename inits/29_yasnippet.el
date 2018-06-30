@@ -1,4 +1,5 @@
 ;;; Code:
+(use-package yasnippet-snippets)
 (use-package yasnippet
   :diminish yas-minor-mode
   :bind (:map yas-minor-mode-map
