@@ -14,8 +14,10 @@
 (defun my-c-c++-mode-init ()
   (progn
   (setq c-basic-offset 4)
-  (setq tab-width 4))
+  (setq tab-width 4)
+  (setq indent-tabs-mode nil))
   )
 (add-hook 'c-mode-hook 'my-c-c++-mode-init)
 (add-hook 'c++-mode-hook 'my-c-c++-mode-init)
+(add-hook 'java-mode-hook 'my-c-c++-mode-init)
 ;;; 20_prog.el ends here
